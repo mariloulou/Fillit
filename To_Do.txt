@@ -1,0 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    To_Do.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
+#    Updated: 2016/12/07 06:51:18 by mcassar          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+- Faire le Makefile
+- Structure Fillit.h 
+- Learn Git
+- Entree Programme + Verif
+- Traitement Programme
+- Sortie
+
+---- Program Working ----
+
+- Extensive testing
+- Norme
+- Opti
+- Verif Final
+- Push
