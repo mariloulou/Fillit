@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 12:40:52 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 12:48:40 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ all: $(LIB) $(NAME)
 $(LIB) :
 	@cd $(LIB_DIR) && make
 
-$(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) $^ -o $@
+$(NAME) : $(LIB) $(OBJS)
+	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) $(OBJS) -o $@
 	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m successfully compiled.\e[0m\n"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
