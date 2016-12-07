@@ -6,7 +6,7 @@
 /*   By: mcassar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 09:58:38 by mcassar           #+#    #+#             */
-/*   Updated: 2016/12/06 09:07:35 by mcassar          ###   ########.fr       */
+/*   Updated: 2016/12/07 11:35:44 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int	ft_verif_samples_ttmns(void)
 	read(fd, buf, BUF_SIZE);
 	tab = ft_strsplit(buf, '\n');
 	if (count_links(tab) == -1)
-		return(-1);
+		return (-1);
 	return (0);
 }
