@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 12:34:33 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 12:40:52 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(LIB) :
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) $^ -o $@
-	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m has been compiled successfully !\e[0m\n"
+	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m successfully compiled.\e[0m\n"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)

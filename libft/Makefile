@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/18 01:13:53 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 09:13:48 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 12:41:18 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,7 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@printf "\e[32mLibrary \e[1m$(NAME)\e[0m\e[32m succesfully compiled.\e[0m\n"
+	@printf "\e[32mLibrary \e[1m$(NAME)\e[0m\e[32m successfully compiled.\e[0m\n"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR) $(OBJS_DIR){btree,display,list,math,memory,misc,string}
