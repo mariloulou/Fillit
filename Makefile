@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 09:40:07 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 11:49:02 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ LFLAGS		=	-L./libft/ -lft
 
 SRCS_DIR	=	./srcs/
 SRCS_LIST	=	\
-				main.c
+				main.c \
+				fillit.c \
+				parse_input.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./objs/
