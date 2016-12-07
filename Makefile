@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 11:49:02 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 12:34:33 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ clean :
 fclean :
 	@rm -rf $(NAME) $(OBJS_DIR)
 	@cd $(LIB_DIR) && make fclean
-	@printf "\e[33mProgram \e[1m$(NAME)\e[0m\e[33m and it's objects files have been removed.\e[0m\n"
+	@printf "\e[33mProgram \e[1m$(NAME)\e[0m\e[33m and its objects files have been removed.\e[0m\n"
 
 re: fclean all
 
