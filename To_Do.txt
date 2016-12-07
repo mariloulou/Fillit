@@ -6,22 +6,22 @@
 #    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
-#    Updated: 2016/12/07 06:51:18 by mcassar          ###   ########.fr        #
+#    Updated: 2016/12/07 07:05:15 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-- Faire le Makefile
-- Structure Fillit.h 
-- Learn Git
-- Entree Programme + Verif
-- Traitement Programme
-- Sortie
+[Faire le Makefile]							[ WAITING ]
+[Structure Fillit.h]						[ WAITING ]
+[Learn Git]									[ WAITING ]
+[Entree Programme + Verif (usage)]			[ WAITING ]
+[Traitement Programme]						[ WAITING ]
+[Sortie]									[ WAITING ]
 
 ---- Program Working ----
 
-- Extensive testing
-- Norme
-- Opti
-- Verif Final
-- Push
+[Extensive testing]							[ WAITING ]
+[Norme]										[ WAITING ]
+[Opti]										[ WAITING ]
+[Verif Final + remove this todo file]		[ WAITING ]
+[Push]										[ WAITING ]
