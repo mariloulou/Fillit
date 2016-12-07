@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 08:13:22 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 09:40:07 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME		=	fillit
 
 CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror
-HFLAGS		=	-I includes/ -I libft/includes/
-LFLAGS		=	-Llibft/ -lft
+HFLAGS		=	-I ./includes/ -I libft/includes/
+LFLAGS		=	-L./libft/ -lft
 
-SRCS_DIR	=	srcs/
+SRCS_DIR	=	./srcs/
 SRCS_LIST	=	\
 				main.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
@@ -26,17 +26,23 @@ OBJS_DIR	=	./objs/
 OBJS_LIST	=	$(patsubst %.c, %.o, $(SRCS_LIST))
 OBJS		=	$(addprefix $(OBJS_DIR), $(OBJS_LIST))
 
+LIB			=	./libft/libft.a
+LIB_DIR		=	./libft/
+
 .PHONY : all norme clean fclean re debug debug_re
 
-all: $(NAME)
+all: $(LIB) $(NAME)
+
+$(LIB) :
+	@cd $(LIB_DIR) && make
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) $^ -o $@
-	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m has been compiled successfully !.\e[0m\n"
+	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m has been compiled successfully !\e[0m\n"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(HFLAGS) -c $< -o $@
 
 norme :
 	@if type "norminette" &> /dev/null ; then\
@@ -48,10 +54,12 @@ norme :
 
 clean :
 	@rm -rf $(OBJS_DIR)
-	@printf "\e[33mObjects files removed.\e[0m\n"
-fclean : clean
-	@rm -f $(NAME)
-	@printf "\e[33mLibrary \e[1m$(NAME)\e[0m\e[33m removed.\e[0m\n"
+	@cd $(LIB_DIR) && make clean
+	@printf "\e[33m$(NAME)'s objects files have been removed.\e[0m\n"
+fclean :
+	@rm -rf $(NAME) $(OBJS_DIR)
+	@cd $(LIB_DIR) && make fclean
+	@printf "\e[33mProgram \e[1m$(NAME)\e[0m\e[33m and it's objects files have been removed.\e[0m\n"
 
 re: fclean all
 

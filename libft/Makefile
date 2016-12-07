@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/18 01:13:53 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 08:10:06 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 09:13:48 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,10 +141,10 @@ norme :
 
 clean :
 	@rm -rf $(OBJS_DIR)
-	@printf "\e[33mLibrary objects files removed.\e[0m\n"
-fclean : clean
-	@rm -f $(NAME)
-	@printf "\e[33mLibrary \e[1m$(NAME)\e[0m\e[33m removed.\e[0m\n"
+	@printf "\e[33m$(NAME)'s objects files have been removed.\e[0m\n"
+fclean :
+	@rm -rf $(NAME) $(OBJS_DIR)
+	@printf "\e[33mLibrary \e[1m$(NAME)\e[0m\e[33m and its projects files have been removed.\e[0m\n"
 
 re: fclean all
 

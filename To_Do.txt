@@ -6,15 +6,15 @@
 #    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
-#    Updated: 2016/12/07 08:17:01 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/07 09:39:20 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-[Faire le Makefile]							[ PENDING TESTING ]
-[Structure Fillit.h]						[ PENDING TESTING ]
+[Faire le Makefile]							[ OK ]
+[Structure Fillit.h]						[ OK ]
 [Learn Git]									[ WAITING ]
-[Entree Programme + Verif (usage)]			[ WAITING ]
+[Entree Programme + Verif (usage)]			[ RUNNING ]
 [Traitement Programme]						[ WAITING ]
 [Sortie]									[ WAITING ]
 
