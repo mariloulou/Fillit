@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/08 14:41:18 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/08 14:53:20 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,40 @@
 
 /*
 ** parse_tetriminos() runs at the start of a complete, correctly formated
-** tetrimino. It transforms the '#' in digits as it goes.
+** tetrimino.
+** parse_tetriminos_block() is a recursive function to check the tetrimino
+** itself. It transforms the '#' in digits as it goes.
 */
 
 static int	parse_tetriminos_block(char *s, int i, int tetri_nb)
 {
-	(void)s;
-	(void)i;
-	(void)tetri_nb;
-	return (4);
+	int		nb;
+
+	if (s[i] != '#')
+		return (0);
+	nb = 1;
+	s[i] = (char)tetri_nb + 'A';
+	if (i > 0)
+		nb += parse_tetriminos_block(s, i - 1, tetri_nb);
+	if (i > 4)
+		nb += parse_tetriminos_block(s, i - 5, tetri_nb);
+	if (i < 16)
+		nb += parse_tetriminos_block(s, i + 5, tetri_nb);
+	if (i < 20)
+		nb += parse_tetriminos_block(s, i + 1, tetri_nb);
+	return (nb);
 }
 
 static int	parse_tetriminos(char *s)
 {
 	static int	tetri_nb = -1;
 	int			i;
-	int			nb;
 
 	i = 0;
-	nb = 0;
 	tetri_nb++;
-	while (i < 20)
-	{
-		if (s[i] == '#')
-			nb++;
-		i++;
-	}
-	i = 0;
 	while (s[i] != '#')
 		i++;
-	if (nb != 4 || parse_tetriminos_block(s, i, tetri_nb) != 4)
+	if (parse_tetriminos_block(s, i, tetri_nb) != 4)
 		return (0);
 	return (1);
 }

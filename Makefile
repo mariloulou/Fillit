@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/08 14:00:56 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/08 14:57:08 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,23 +55,23 @@ norme :
 	fi
 
 test : all
-	@printf "===========================[ Input Validation Tests ]===========================\n"
-	@printf "Valid inputs : "
+	@printf "===========================[ Input Validation Tests ]==========================="
+	@printf "\nValid inputs       ["
 	@./fillit test/valid-1.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
 	@./fillit test/valid-2.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
 	@./fillit test/valid-3.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
 	@./fillit test/valid-4.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
-	@printf "\nInvalid format : "
+	@printf "]\nInvalid format     ["
 	@./fillit test/invalid-1.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-2.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-3.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-4.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-5.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
-	@printf "\nInvalid tetriminos : "
+	@printf "]\nInvalid tetriminos ["
 	@./fillit test/invalid-6.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-7.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-8.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
-	@printf "\n=================================[ End Tests ]==================================\n"
+	@printf "]\n=================================[ End Tests ]==================================\n"
 
 Clean :
 	@rm -rf $(OBJS_DIR)
