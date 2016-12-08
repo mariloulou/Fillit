@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/08 08:01:53 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/08 14:41:18 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,41 @@
 
 #define BUF_SIZE 546
 
-/*static int	parse_tetriminos(char *s)
+/*
+** parse_tetriminos() runs at the start of a complete, correctly formated
+** tetrimino. It transforms the '#' in digits as it goes.
+*/
+
+static int	parse_tetriminos_block(char *s, int i, int tetri_nb)
 {
-	return (0);
-}*/
+	(void)s;
+	(void)i;
+	(void)tetri_nb;
+	return (4);
+}
+
+static int	parse_tetriminos(char *s)
+{
+	static int	tetri_nb = -1;
+	int			i;
+	int			nb;
+
+	i = 0;
+	nb = 0;
+	tetri_nb++;
+	while (i < 20)
+	{
+		if (s[i] == '#')
+			nb++;
+		i++;
+	}
+	i = 0;
+	while (s[i] != '#')
+		i++;
+	if (nb != 4 || parse_tetriminos_block(s, i, tetri_nb) != 4)
+		return (0);
+	return (1);
+}
 
 static int	verify_format(char *s)
 {
@@ -49,7 +80,7 @@ static int	verify_format(char *s)
 				return (0);
 			i++;
 		}
-		if (s[i] != '\n' && s[i] != '\0')
+		if (!parse_tetriminos(s) || (s[i] != '\n' && s[i] != '\0'))
 			return (0);
 		s += i + 1;
 	}
