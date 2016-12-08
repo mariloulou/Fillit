@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/18 01:13:53 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 12:41:18 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/08 14:34:23 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,15 @@ SRCS_LIST	=	\
 				display/ft_putchar.c \
 				display/ft_putchar_fd.c \
 				display/ft_putendl.c \
+				display/ft_putnendl.c \
 				display/ft_putendl_fd.c \
+				display/ft_putnendl_fd.c \
 				display/ft_putnbr.c \
 				display/ft_putnbr_fd.c \
 				display/ft_putstr.c \
+				display/ft_putnstr.c \
 				display/ft_putstr_fd.c \
+				display/ft_putnstr_fd.c \
 				list/ft_lstadd.c \
 				list/ft_lstdel.c \
 				list/ft_lstdelone.c \

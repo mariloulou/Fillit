@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 00:06:46 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/06 10:12:58 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/08 14:34:23 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int nb, int fd);
+void				ft_putnendl(char const *s, size_t n);
+void				ft_putnendl_fd(char const *s, int fd, size_t n);
+void				ft_putnstr(char const *s, size_t n);
+void				ft_putnstr_fd(char const *s, int fd, size_t n);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 
