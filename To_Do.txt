@@ -6,7 +6,7 @@
 #    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
-#    Updated: 2016/12/07 12:29:58 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/08 08:20:29 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 [Entree Programme + Verif (usage)]			[ RUNNING ]
 -> [CLI input & Usage]						[OK]
 -> [File reading and closing]				[OK]
--> [Validity check]							[ WAITING ]
+-> [Validity check]							[ RUNNING ]
 [Traitement Programme]						[ WAITING ]
 -> [Choix d'algo]							[ WAITING ]
 -> [Implementation]							[ WAITING ]
