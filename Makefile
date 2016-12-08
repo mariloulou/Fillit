@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/08 14:57:08 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/08 16:10:15 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,10 @@ test : all
 	@./fillit test/invalid-6.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-7.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-8.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@printf "]\n===============================[ Solving Tests ]================================"
+	@printf "\nSolving checks     ["
+	@./fillit test/valid-1.fillit 2>/dev/null 1>check.fillit && diff check.fillit test/solved-1.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m" ; rm check.fillit
+	@./fillit test/valid-2.fillit 2>/dev/null 1>check.fillit && diff check.fillit test/solved-2.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m" ; rm check.fillit
 	@printf "]\n=================================[ End Tests ]==================================\n"
 
 Clean :
