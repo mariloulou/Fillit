@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/08 14:53:20 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/08 15:30:13 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ char		*parse_input(char *filename)
 		return (NULL);
 	if (read(fd, entry, BUF_SIZE) == -1)
 		entry = NULL;
-	else
+	else if (!verify_format(entry))
 	{
-		if (!verify_format(entry))
-			entry = NULL;
+		free(entry);
+		entry = NULL;
 	}
 	close(fd);
 	return (entry);
