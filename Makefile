@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/07 12:48:40 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/08 08:07:30 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJS_LIST))
 LIB			=	./libft/libft.a
 LIB_DIR		=	./libft/
 
-.PHONY : all norme clean fclean re debug debug_re
+.PHONY : all norme clean fclean re debug debug_re test
 
 all: $(LIB) $(NAME)
 
@@ -39,7 +39,7 @@ $(LIB) :
 	@cd $(LIB_DIR) && make
 
 $(NAME) : $(LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(HFLAGS) $(LFLAGS) $(OBJS) -o $@
+	@$(CC) $(CFLAGS) $(HFLAGS) $(OBJS) $(LFLAGS) -o $@
 	@printf "\e[32mProgram \e[1m$(NAME)\e[0m\e[32m successfully compiled.\e[0m\n"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
@@ -53,6 +53,17 @@ norme :
 	else\
 		printf "\e[31mNorminette not installed, not checking norm.\e[$$(tput cols)C\e[8D\e[7m[ Error ]\n\e[21m\e[0m";\
 	fi
+
+test : all
+	@printf "Input validation tests :\n"
+	@./fillit test/valid-1.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
+	@./fillit test/valid-2.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
+	@./fillit test/invalid-1.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@./fillit test/invalid-2.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@./fillit test/invalid-3.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@./fillit test/invalid-4.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@./fillit test/invalid-5.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
+	@printf "\nInput validation tests ended.\n"
 
 clean :
 	@rm -rf $(OBJS_DIR)
