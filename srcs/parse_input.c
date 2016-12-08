@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/07 13:32:29 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/08 08:01:53 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,11 @@ static int	verify_format(char *s)
 {
 	int		i;
 
-	ft_putendl("Verifying..."); //
 	if (((ft_strlen(s) - 20) % 21) != 0)
 		return (0);
-	ft_putendl("Good character number"); //
 	while (*s)
 	{
 		i = 0;
-		ft_putendl("Checking tetrimino # ..."); //
 		while (i < 20)
 		{
 			while ((i + 1) % 5 != 0)
@@ -73,8 +70,6 @@ char		*parse_input(char *filename)
 	{
 		if (!verify_format(entry))
 			entry = NULL;
-		else
-			ft_putstr("Passed\n"); //
 	}
 	close(fd);
 	return (entry);
