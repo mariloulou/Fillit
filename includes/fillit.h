@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 08:14:13 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/07 12:05:01 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/09 15:00:05 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "libft.h"
 
 char	*parse_input(char *filename);
-char	*fillit(char *entry);
+char	**fillit(char *entry);
 
 #endif

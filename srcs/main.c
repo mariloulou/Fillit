@@ -6,17 +6,32 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 08:20:59 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/07 12:05:01 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/09 17:54:48 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+static void		free_tab(char **tab)
+{
+	int		i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+int				main(int argc, char **argv)
 {
 	char	*entry;
-	char	*result;
+	char	**result;
 
 	if (argc != 2)
 	{
@@ -29,8 +44,8 @@ int		main(int argc, char **argv)
 		return (-1);
 	}
 	result = fillit(entry);
-	ft_putstr(result);
+//	ft_putstr(result);
 	free(entry);
-	free(result);
+	free_tab(result);
 	return (0);
 }
