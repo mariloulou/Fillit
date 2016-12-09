@@ -6,7 +6,7 @@
 #    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
-#    Updated: 2016/12/08 14:54:55 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/09 14:32:06 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,17 @@
 [Structure Fillit.h]						[ OK ]
 [Learn Git]									[ WAITING ]
 [Entree Programme + Verif (usage)]			[ RUNNING ]
--> [CLI input & Usage]						[OK]
--> [File reading and closing]				[OK]
+-> [CLI input & Usage]						[ OK ]
+-> [File reading and closing]				[ OK ]
 -> [Validity check]							[ OK ]
 [Traitement Programme]						[ WAITING ]
 -> [Choix d'algo]							[ WAITING ]
 -> [Implementation]							[ WAITING ]
+--> [Generer une grille vide]				[ WAITING ]
+--> [Placer les tetriminos dans une grille]	[ WAITING ]
+--> [Affichage de debug]					[ WAITING ]
+--> [Backtracking]							[ WAITING ]
+--> [Deplacement des tetriminos]			[ WAITING ]
 -> [Tests]									[ WAITING ]
 [Sortie]									[ OK ]
 
