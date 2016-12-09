@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/08 16:10:15 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/09 07:26:19 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(OBJS_LIST))
 LIB			=	./libft/libft.a
 LIB_DIR		=	./libft/
 
-.PHONY : all norme clean fclean re debug debug_re test
+.PHONY : all norme test check clean fclean re debug debug_re
 
 all: $(LIB) $(NAME)
 
@@ -77,7 +77,9 @@ test : all
 	@./fillit test/valid-2.fillit 2>/dev/null 1>check.fillit && diff check.fillit test/solved-2.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m" ; rm check.fillit
 	@printf "]\n=================================[ End Tests ]==================================\n"
 
-Clean :
+check : norme re test
+
+clean :
 	@rm -rf $(OBJS_DIR)
 	@cd $(LIB_DIR) && make clean
 	@printf "\e[33m$(NAME)'s objects files have been removed.\e[0m\n"
@@ -89,6 +91,6 @@ fclean :
 re: fclean all
 
 debug : CFLAGS=-Wall -Wextra -fsanitize=address -g
-debug : norme all
+debug : all
 
 debug_re : fclean debug
