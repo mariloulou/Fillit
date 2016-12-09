@@ -6,7 +6,7 @@
 #    By: mcassar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 06:49:10 by mcassar           #+#    #+#              #
-#    Updated: 2016/12/09 14:32:06 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/09 18:03:11 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@
 -> [File reading and closing]				[ OK ]
 -> [Validity check]							[ OK ]
 [Traitement Programme]						[ WAITING ]
--> [Choix d'algo]							[ WAITING ]
--> [Implementation]							[ WAITING ]
---> [Generer une grille vide]				[ WAITING ]
+-> [Choix d'algo]							[ OK ]
+-> [Implementation]							[ RUNNING ]
+--> [Generer une grille vide]				[ OK ]
+--> [Formater l'entree]						[ OK ]
 --> [Placer les tetriminos dans une grille]	[ WAITING ]
 --> [Affichage de debug]					[ WAITING ]
 --> [Backtracking]							[ WAITING ]
