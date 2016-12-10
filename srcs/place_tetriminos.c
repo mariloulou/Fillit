@@ -6,7 +6,7 @@
 /*   By: mcassar <mcassar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 14:23:05 by mcassar           #+#    #+#             */
-/*   Updated: 2016/12/10 18:27:57 by mcassar          ###   ########.fr       */
+/*   Updated: 2016/12/10 18:30:05 by mcassar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,39 +61,10 @@ int		check_place(char **map, int i, int j, char *tetri)
 	return (s.block);
 }
 
-int		valid_place(char **map, int i, int j, char *tetri)
+int		place_tetriminos(char **map, int i, int j, char *tetri)
 {
 	if (check_place(map, i, j, tetri) == 4)
 		return(0);
 	else
 		return(1);
-}
-
-int		main(void)
-{
-	char	**map;
-	char	*tetri;
-	int		i;
-	int		j;
-	int		fd;
-	char	buf[4096 + 1];
-	int		h;
-
-	h = 0;
-	i = 0;
-	j = 0;
-	fd = open("map", O_RDWR);
-	read(fd, buf, 4096);
-	map = ft_strsplit(buf, '\n');
-	tetri = ".#.\n###.\n....\n....";
-	if (valid_place(map, i, j, tetri) == 0)
-	{
-		while (map[h])
-		{
-			ft_putendl(map[h]);
-			h++;
-		}
-		return (0);
-	}
-	return (1);
 }
