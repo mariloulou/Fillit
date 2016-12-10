@@ -1,34 +1,32 @@
 int	check_place(char **map, int i, int j, char *tetri)
 {
-	int y;
 	int block;
 	int savej;
 
-	y = 0;
 	block = 0;
 	savej = j;
-	while(block < 4 || tetri[y] != '/0')
+	while(block < 4 || *tetri != '\0')
 	{
-		while (tetri[y] != '#')
-			y++;
-		if (map[i][j] == '.');
+		while (*tetri != '#')
+			tetri++;
+		if (map[i][j] == '.')
 		{
-			map[i][j] == tetri[y];
+			map[i][j] = *tetri;
 			block++;
-			y++;
+			tetri++;
 			j++;
-			while (tetri[y] != '#')
+			while (*tetri != '#')
 			{
-				y++;
-				if (y % 5 == 0)
+				tetri++;
+				if (*tetri % 5 == 0)
 				{
 					i++;
-					j == savej;
+					j = savej;
 				}
 			}
 		}
 	}
 	if (block == 4)
-		return(1)
+		return(1);
 	return(0);
 }
