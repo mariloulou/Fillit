@@ -13,7 +13,7 @@
 
 [Faire le Makefile]							[ OK ]
 [Structure Fillit.h]							[ OK ]
-[Learn Git]								[ RUNNING ]
+[Learn Git]								[ OK ]
 [Entree Programme + Verif (usage)]					[ OK ]
 -> [CLI input & Usage]							[ OK ]
 -> [File reading and closing]						[ OK ]
@@ -23,7 +23,7 @@
 -> [Implementation]							[ RUNNING ]
 --> [Generer une grille vide]						[ OK ]
 --> [Formater l'entree]							[ OK ]
---> [Placer les tetriminos dans une grille]				[ RUNNING ]
+--> [Placer les tetriminos dans une grille]				[ WAITING FOR EXTENDED TESTING ]
 --> [Affichage de debug]						[ RUNNING ]
 --> [Backtracking]							[ WAITING ]
 --> [Deplacement des tetriminos]					[ WAITING ]
