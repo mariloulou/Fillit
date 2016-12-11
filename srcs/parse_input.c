@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/09 17:51:51 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 17:24:52 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ static int	verify_format(char *s)
 		}
 		if (!parse_tetriminos(s) || (s[i] != '\n' && s[i] != '\0'))
 			return (0);
+		if (s[i] == '\0')
+			return (1);
 		s += 21;
 	}
 	return (1);
@@ -122,17 +124,22 @@ static int	verify_format(char *s)
 char		*parse_input(char *filename)
 {
 	int		fd;
+	int		len;
 	char	*entry;
 
 	if ((fd = open(filename, O_RDONLY)) == -1
-		|| (entry = (char*)malloc(sizeof(*entry) * BUF_SIZE)) == NULL)
+		|| (entry = (char*)malloc(sizeof(*entry) * (BUF_SIZE + 1))) == NULL)
 		return (NULL);
-	if (read(fd, entry, BUF_SIZE) == -1)
+	if ((len = read(fd, entry, BUF_SIZE)) == -1)
 		entry = NULL;
-	else if (!verify_format(entry))
+	else
 	{
-		free(entry);
-		entry = NULL;
+		entry[len] = '\0';
+		if (!verify_format(entry))
+		{
+			free(entry);
+			entry = NULL;
+		}
 	}
 	close(fd);
 	return (entry);

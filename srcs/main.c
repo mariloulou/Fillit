@@ -6,14 +6,14 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 08:20:59 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/10 15:50:46 by mcassar          ###   ########.fr       */
+/*   Updated: 2016/12/11 17:28:25 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "fillit.h"
 
-static void		free_tab(char **tab)
+void		free_tab(char **tab)
 {
 	int		i;
 
@@ -28,7 +28,18 @@ static void		free_tab(char **tab)
 	free(tab);
 }
 
-int				main(int argc, char **argv)
+void	ft_puttab(char **tab)
+{
+	if (!tab)
+		return ;
+	while (*tab && **tab)
+	{
+		ft_putendl(*tab);
+		tab++;
+	}
+}
+
+int			main(int argc, char **argv)
 {
 	char	*entry;
 	char	**result;
@@ -44,7 +55,7 @@ int				main(int argc, char **argv)
 		return (-1);
 	}
 	result = fillit(entry);
-//	ft_putstr(result);
+	ft_puttab(result);
 	free(entry);
 	free_tab(result);
 	return (0);

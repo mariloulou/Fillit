@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/09 07:26:19 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/11 16:03:07 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS_DIR	=	./srcs/
 SRCS_LIST	=	\
 				main.c \
 				fillit.c \
+				place_tetriminos.c \
 				parse_input.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 

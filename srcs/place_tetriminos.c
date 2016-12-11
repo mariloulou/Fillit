@@ -3,63 +3,89 @@
 /*                                                        :::      ::::::::   */
 /*   place_tetriminos.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcassar <mcassar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/10 14:23:05 by mcassar           #+#    #+#             */
-/*   Updated: 2016/12/10 18:30:05 by mcassar          ###   ########.fr       */
+/*   Created: 2016/12/11 16:04:27 by gudemare          #+#    #+#             */
+/*   Updated: 2016/12/11 17:54:17 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int	place_tetri(char **map, int i, int j, char *tetri)
+static int		check_place(char **map, int j, int i, char *tetri)
 {
-	if (map[i][j] != '.' || *tetri == '.')
-		return (1);
-	if (map[i][j] == '.' && *tetri != '.')
-		map[i][j] = *tetri;
-	return (0);
-}
+	int		block;
+	int		t;
 
-void	check_place_ext(t_struct *s, int *j)
-{
-	*j = *j + 1;
-	s->block = s->block + 1;
-}
-
-int		check_place(char **map, int i, int j, char *tetri)
-{
-	t_struct s;
-	
-	s.savej = j;
-	s.block = 0;
-	while (s.block < 4 && *tetri != '\0')
+	t = 0;
+	block = 0;
+	while (block < 4)
 	{
-		while (*tetri == '.')
+		if (ft_isalpha(tetri[t]))
 		{
-			tetri++;
-			(map[i][j] == '.' && j = 0;) ? j++ : 0;
+			if (map[j + (t / 5)][i + (t % 5)] == '.')
+				block++;
+			else
+				return (0);
 		}
-		if (place_tetri(map, i, j, tetri) == 1)
-			return(0);
-		check_place_ext(&s, &j);
-		tetri++;
-		while (*tetri == '.')
-			tetri++;
-		if (*tetri == '\n')
+		t++;
+	}
+	return (1);
+}
+
+static int		place_tetri_point(char **map, int j, int i, char *tetri)
+{
+	int		block;
+	int		t;
+
+	t = 0;
+	block = 0;
+	while (block < 4)
+	{
+		if (ft_isalpha(tetri[t]))
+		{
+			map[j + (t / 5)][i + (t % 5)] = tetri[t];
+			block++;
+		}
+		t++;
+	}
+	return (1);
+}
+
+int				place_tetriminos(char **map, char *tetri, int pos)
+{
+	int		j;
+	int		i;
+	int		count;
+
+	count = 0;
+	j = 0;
+	i = 0;
+	while (count <= pos)
+	{
+		while(!check_place(map, j, i, tetri))
 		{
 			i++;
-			j = s.savej;
-			tetri++;
+			if (map[j][i] == '\0')
+			{
+				if (map[j + 1][0] == '\0')
+					return (0);
+				j++;
+				i = 0;
+			}
+		}
+		count++;
+		if (count > pos)
+			break;
+		i++;
+		if (map[j][i] == '\0')
+		{
+			if (map[j + 1][0] == '\0')
+				return (0);
+			j++;
+			i = 0;
 		}
 	}
-	return (s.block);
-}
-
-int		place_tetriminos(char **map, int i, int j, char *tetri)
-{
-	if (check_place(map, i, j, tetri) == 4)
-		return(0);
-	else
-		return(1);
+	place_tetri_point(map, j, i, tetri);
+	return (1);
 }
