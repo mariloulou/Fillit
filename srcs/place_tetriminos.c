@@ -1,32 +1,70 @@
-int	check_place(char **map, int i, int j, char *tetri)
-{
-	int block;
-	int savej;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   place_tetriminos.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcassar <mcassar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/10 14:23:05 by mcassar           #+#    #+#             */
+/*   Updated: 2016/12/10 18:30:05 by mcassar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	block = 0;
-	savej = j;
-	while(block < 4 || *tetri != '\0')
+#include <unistd.h>
+#include <stdio.h>
+#include "libft.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int	place_tetri(char **map, int i, int j, char *tetri)
+{
+	if (map[i][j] != '.' || *tetri == '.')
+		return (1);
+	if (map[i][j] == '.' && *tetri != '.')
+		map[i][j] = *tetri;
+	return (0);
+}
+
+void	check_place_ext(t_struct *s, int *j)
+{
+	*j = *j + 1;
+	s->block = s->block + 1;
+}
+
+int		check_place(char **map, int i, int j, char *tetri)
+{
+	t_struct s;
+	
+	s.savej = j;
+	s.block = 0;
+	while (s.block < 4 && *tetri != '\0')
 	{
-		while (*tetri != '#')
-			tetri++;
-		if (map[i][j] == '.')
+		while (*tetri == '.')
 		{
-			map[i][j] = *tetri;
-			block++;
 			tetri++;
-			j++;
-			while (*tetri != '#')
-			{
-				tetri++;
-				if (*tetri % 5 == 0)
-				{
-					i++;
-					j = savej;
-				}
-			}
+			(map[i][j] == '.') ? j++ : 0;
+		}
+		if (place_tetri(map, i, j, tetri) == 1)
+			return(0);
+		check_place_ext(&s, &j);
+		tetri++;
+		while (*tetri == '.')
+			tetri++;
+		if (*tetri == '\n')
+		{
+			i++;
+			j = s.savej;
+			tetri++;
 		}
 	}
-	if (block == 4)
+	return (s.block);
+}
+
+int		place_tetriminos(char **map, int i, int j, char *tetri)
+{
+	if (check_place(map, i, j, tetri) == 4)
+		return(0);
+	else
 		return(1);
-	return(0);
 }
