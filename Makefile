@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/11 16:03:07 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/11 19:24:04 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,6 @@ norme :
 
 test : all
 	@printf "===========================[ Input Validation Tests ]==========================="
-	@printf "\nValid inputs       ["
-	@./fillit test/valid-1.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
-	@./fillit test/valid-2.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
-	@./fillit test/valid-3.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
-	@./fillit test/valid-4.fillit &>/dev/null && printf "\e[32m.\e[0m" || printf "\e[31mF\e[0m"
 	@printf "]\nInvalid format     ["
 	@./fillit test/invalid-1.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"
 	@./fillit test/invalid-2.fillit &>/dev/null && printf "\e[31mF\e[0m" || printf "\e[32m.\e[0m"

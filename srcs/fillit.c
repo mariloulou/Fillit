@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:36:57 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 18:12:49 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 19:24:52 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,47 +86,35 @@ static char		**sqrgen(int size)
 	return (res);
 }
 
-static int		backtrack_fill(char **res, int size, char *entry, char ***solution)
+static char		**backtrack_fill(char **res, char *tetri)
 {
-	int		nb_tetri= ((ft_strlen(entry) - 20) / 21) + 1;
-	int		nb_placed;
-	char	**stock[nb_tetri];
-	int		try = 0;
+	int		try;
+	char	**map;
+	char	**sol;
 
-	(void)size;
-	nb_placed = 0;
-	while (nb_placed < nb_tetri)
+	map = sqrdup(res);
+	if (!map)
+		return (NULL);
+	try = 0;
+	sol = NULL;
+	while (place_tetriminos(map, tetri, try) != 0)
 	{
-		if (place_tetriminos(res, entry, try) == 1)
+		if (tetri[20] == '\0')
+			return (map);
+		if ((sol = backtrack_fill(map, tetri + 21)) == NULL)
 		{
-			stock[nb_placed] = res;
-			ft_putendl("state :");
-			ft_puttab(res);
-			ft_putendl("");
-			nb_placed++;
-			res = sqrdup(res);
-			entry += 21;
-			try = 0;
+			free_tab(map);
+			map = sqrdup(res);
+			try++;
 		}
 		else
 		{
-			ft_putendl("============Trying Backtracking...=====");
-			if (nb_placed == 0)
-				return (0);
-			ft_putendl("Old state :");
-			ft_puttab(res);
-			ft_putendl("");
-			nb_placed--;
-			res = stock[nb_placed];
-			ft_putendl("New state :");
-			ft_puttab(res);
-			ft_putendl("===================================================");
-			entry -= 21;
-			try++;
+			free_tab(map);
+			return(sol);
 		}
 	}
-	*solution = res;
-	return (1);
+	free_tab(map);
+	return (NULL);
 }
 
 char			**fillit(char *entry)
@@ -136,15 +124,11 @@ char			**fillit(char *entry)
 	int		filled;
 
 	filled = 0;
-	size = 2;
-	ft_putendl(entry); //
+	size = ft_sqrt(((ft_strlen(entry) + 1) / 21) * 4);
 	while (size < 15)
 	{
 		res = sqrgen(size);
-		ft_putstr("Trying size ");
-		ft_putnbr(size);
-		ft_putendl("...");
-		if (backtrack_fill(res, size, entry, &res) == 1)
+		if ((res = backtrack_fill(res, entry)) != NULL)
 			return (res);
 		free_tab(res);
 		size++;
