@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/11 16:04:27 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 17:54:17 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 19:57:57 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ static int		place_tetri_point(char **map, int j, int i, char *tetri)
 	return (1);
 }
 
+static int		next_case(char **map, int *j, int *i)
+{
+	*i += 1;
+	if (map[*j][*i] == '\0')
+	{
+		if (map[*j + 1][0] == '\0')
+			return (0);
+		*j += 1;
+		*i = 0;
+	}
+	return (1);
+}
+
 int				place_tetriminos(char **map, char *tetri, int pos)
 {
 	int		j;
@@ -63,28 +76,14 @@ int				place_tetriminos(char **map, char *tetri, int pos)
 	i = 0;
 	while (count <= pos)
 	{
-		while(!check_place(map, j, i, tetri))
-		{
-			i++;
-			if (map[j][i] == '\0')
-			{
-				if (map[j + 1][0] == '\0')
-					return (0);
-				j++;
-				i = 0;
-			}
-		}
+		while (!check_place(map, j, i, tetri))
+			if (next_case(map, &j, &i) == 0)
+				return (0);
 		count++;
 		if (count > pos)
-			break;
-		i++;
-		if (map[j][i] == '\0')
-		{
-			if (map[j + 1][0] == '\0')
-				return (0);
-			j++;
-			i = 0;
-		}
+			break ;
+		if (next_case(map, &j, &i) == 0)
+			return (0);
 	}
 	place_tetri_point(map, j, i, tetri);
 	return (1);

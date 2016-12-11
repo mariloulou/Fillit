@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:28:22 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 17:24:52 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 19:57:07 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ static int	parse_tetriminos_block(char *s, int i, int tetri_nb)
 		return (0);
 	nb = 1;
 	s[i] = (char)tetri_nb + 'A';
-	if (i > 0)
+	if (i > 0 && s[i - 1] == '#')
 		nb += parse_tetriminos_block(s, i - 1, tetri_nb);
-	if (i > 4)
+	if (i > 4 && s[i - 5] == '#')
 		nb += parse_tetriminos_block(s, i - 5, tetri_nb);
-	if (i < 16)
+	if (i < 16 && s[i + 5] == '#')
 		nb += parse_tetriminos_block(s, i + 5, tetri_nb);
-	if (i < 20)
+	if (i < 20 && s[i + 1] == '#')
 		nb += parse_tetriminos_block(s, i + 1, tetri_nb);
 	return (nb);
 }
@@ -83,9 +83,9 @@ static int	parse_tetriminos(char *s)
 
 	i = 0;
 	tetri_nb++;
-	while (s[i] != '#')
+	while (s[i] != '#' && s[i])
 		i++;
-	if (parse_tetriminos_block(s, i, tetri_nb) != 4)
+	if (!s[i] || parse_tetriminos_block(s, i, tetri_nb) != 4)
 		return (0);
 	tidy_tetriminos(s);
 	return (1);
@@ -97,7 +97,7 @@ static int	verify_format(char *s)
 
 	if (((ft_strlen(s) - 20) % 21) != 0)
 		return (0);
-	while (*s)
+	while (1)
 	{
 		i = 0;
 		while (i < 20)
@@ -118,7 +118,6 @@ static int	verify_format(char *s)
 			return (1);
 		s += 21;
 	}
-	return (1);
 }
 
 char		*parse_input(char *filename)

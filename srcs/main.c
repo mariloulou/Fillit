@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 08:20:59 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 17:28:25 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 19:46:10 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		free_tab(char **tab)
 	free(tab);
 }
 
-void	ft_puttab(char **tab)
+static void	ft_puttab(char **tab)
 {
 	if (!tab)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:36:57 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 19:24:52 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 20:06:40 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,20 @@ static char		**sqrdup(char **src)
 	int		size;
 	int		line;
 	char	**res;
-	int		i;
 
 	size = ft_strlen(*src);
 	if (!(res = (char**)malloc(sizeof(*res) * (size + 2))))
-	{
-		ft_putendl("MEMFAIL");
 		return (NULL);
-	}
 	line = 0;
-	while (line < size)
+	while (line <= size)
 	{
-		if (!(res[line] = ft_strdup(src[line])))
+		if (!(res[line] = (char*)malloc(sizeof(*res) * (size + 1))))
 		{
 			free_tab(res);
-			ft_putendl("MEMFAIL");
 			return (NULL);
 		}
+		ft_memcpy((void*)res[line], (void*)src[line], (size_t)(size + 1));
 		line++;
-	}
-	if (!(res[size] = (char*)malloc(sizeof(**res) * (size + 1))))
-	{
-		free_tab(res);
-		return (NULL);
-	}
-	i = 0;
-	while (i <= size)
-	{
-		res[size][i] = '\0';
-		i++;
 	}
 	res[size + 1] = NULL;
 	return (res);
@@ -92,11 +77,9 @@ static char		**backtrack_fill(char **res, char *tetri)
 	char	**map;
 	char	**sol;
 
-	map = sqrdup(res);
-	if (!map)
+	if (!(map = sqrdup(res)))
 		return (NULL);
 	try = 0;
-	sol = NULL;
 	while (place_tetriminos(map, tetri, try) != 0)
 	{
 		if (tetri[20] == '\0')
@@ -110,7 +93,7 @@ static char		**backtrack_fill(char **res, char *tetri)
 		else
 		{
 			free_tab(map);
-			return(sol);
+			return (sol);
 		}
 	}
 	free_tab(map);
@@ -125,7 +108,7 @@ char			**fillit(char *entry)
 
 	filled = 0;
 	size = ft_sqrt(((ft_strlen(entry) + 1) / 21) * 4);
-	while (size < 15)
+	while (1)
 	{
 		res = sqrgen(size);
 		if ((res = backtrack_fill(res, entry)) != NULL)

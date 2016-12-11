@@ -6,7 +6,7 @@
 #    By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 07:52:25 by gudemare          #+#    #+#              #
-#    Updated: 2016/12/11 19:24:04 by gudemare         ###   ########.fr        #
+#    Updated: 2016/12/11 19:43:59 by gudemare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIB_DIR		=	./libft/
 all: $(LIB) $(NAME)
 
 $(LIB) :
-	@cd $(LIB_DIR) && make
+	@cd $(LIB_DIR) && make -j8
 
 $(NAME) : $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(HFLAGS) $(OBJS) $(LFLAGS) -o $@
