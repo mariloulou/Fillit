@@ -6,7 +6,7 @@
 /*   By: gudemare <gudemare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 11:36:57 by gudemare          #+#    #+#             */
-/*   Updated: 2016/12/11 20:06:40 by gudemare         ###   ########.fr       */
+/*   Updated: 2016/12/11 21:40:36 by gudemare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char		**backtrack_fill(char **res, char *tetri)
 	try = 0;
 	while (place_tetriminos(map, tetri, try) != 0)
 	{
-		if (tetri[20] == '\0')
+		if (tetri[21] == '\0')
 			return (map);
 		if ((sol = backtrack_fill(map, tetri + 21)) == NULL)
 		{
@@ -103,6 +103,7 @@ static char		**backtrack_fill(char **res, char *tetri)
 char			**fillit(char *entry)
 {
 	char	**res;
+	char	**grid;
 	int		size;
 	int		filled;
 
@@ -110,11 +111,11 @@ char			**fillit(char *entry)
 	size = ft_sqrt(((ft_strlen(entry) + 1) / 21) * 4);
 	while (1)
 	{
-		res = sqrgen(size);
-		if ((res = backtrack_fill(res, entry)) != NULL)
-			return (res);
-		free_tab(res);
+		grid = sqrgen(size);
+		if ((res = backtrack_fill(grid, entry)) != NULL)
+			break ;
+		free_tab(grid);
 		size++;
 	}
-	return (NULL);
+	return (res);
 }
